@@ -62,7 +62,7 @@ module Mailboxer
 
       #Sends a messages, starting a new conversation, with the messageable
       #as originator
-      def send_message(recipients, msg_body, subject, sanitize_text=true, attachment=nil, message_timestamp = Time.now, with_email: true)
+      def send_message(recipients, msg_body, subject, sanitize_text=true, attachment=nil, message_timestamp=Time.now, with_email=true)
         convo = Mailboxer::ConversationBuilder.new({
           :subject    => subject,
           :created_at => message_timestamp,
@@ -85,7 +85,7 @@ module Mailboxer
 
       #Basic reply method. USE NOT RECOMENDED.
       #Use reply_to_sender, reply_to_all and reply_to_conversation instead.
-      def reply(conversation, recipients, reply_body, subject=nil, sanitize_text=true, attachment=nil, with_email: true)
+      def reply(conversation, recipients, reply_body, subject=nil, sanitize_text=true, attachment=nil, with_email=true)
         subject = subject || "#{conversation.subject}"
         response = Mailboxer::MessageBuilder.new({
           :sender       => self,
