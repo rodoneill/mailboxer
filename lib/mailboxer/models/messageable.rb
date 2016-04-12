@@ -80,7 +80,7 @@ module Mailboxer
           :updated_at   => message_timestamp
         }).build
 
-        message.deliver false, sanitize_text
+        message.deliver false, sanitize_text, with_email
       end
 
       #Basic reply method. USE NOT RECOMENDED.
